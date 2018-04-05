@@ -1,7 +1,7 @@
 class Activity
   attr_reader :participants,
               :name
-  def initialize(name)
+  def initialize(name = 'hiking')
     @name = name
     @participants = Hash.new(0)
   end
