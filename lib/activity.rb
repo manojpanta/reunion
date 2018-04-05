@@ -1,22 +1,28 @@
 class Activity
-  # attr_reader :total_cost
-
-
-  def initialize
-    @total_cost = 0
-    @participants = 0
+  attr_reader :participants,
+              :name
+  def initialize(name)
+    @name = name
+    @participants = Hash.new(0)
   end
 
-  def hiking(participants)
-    @total_cost = participants.values.sum
-    @participants = participants.keys.length
-
-  end
-  # require 'pry' ; binding.pry
-  def split_cost
-    @total_cost.to_f/@participants.length
-
-  #   hiking
+  def add_participants(name, amount_paid)
+    @participants[name] = amount_paid
   end
 
+  def total_cost
+    @participants.values.sum
+  end
+
+  def fair_share
+    total_cost.to_f / @participants.length
+  end
+
+  def calculate_money_owed
+    hash = {}
+    @participants.keys.each do |participant|
+      hash[participant] = fair_share - @participants[participant]
+    end
+    hash
+  end
 end
