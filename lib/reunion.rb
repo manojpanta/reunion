@@ -12,5 +12,17 @@ class Reunion
     @activities << activity
   end
 
-  
+  def total_cost
+    @activities.map do |activity|
+      activity.total_cost
+    end.sum
+  end
+
+  def money_owed
+    @activities.reduce({}) do |results, activity|
+      results = activity.calculate_money_owed.merge(results)
+    end
+  end
+
+
 end
