@@ -120,7 +120,4 @@ class ReunionTest < Minitest::Test
     assert_equal -2.25,  reunion.money_owed[:tylor]
     assert_equal 6.75,  reunion.money_owed[:jeff]
   end
-
-
-
 end
