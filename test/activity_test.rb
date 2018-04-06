@@ -4,7 +4,6 @@ require 'minitest/pride'
 require './lib/activity'
 
 class ActivityTest < Minitest::Test
-
   def setup
     @activity = Activity.new("Hiking")
     @activity.add_participants(:manoj, 14)

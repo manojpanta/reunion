@@ -74,7 +74,6 @@ class ReunionTest < Minitest::Test
   end
 
   def test_it_can_calculate_money_owed_with_two_activities
-    skip
     reunion = Reunion.new("las vegas")
 
     activity1 = Activity.new('pool party')
@@ -89,7 +88,6 @@ class ReunionTest < Minitest::Test
 
     reunion.add_activities(activity1)
     reunion.add_activities(activity2)
-
 
     assert_equal 60, reunion.total_cost
     assert_equal 0,  reunion.money_owed[:manoj]
@@ -118,6 +116,6 @@ class ReunionTest < Minitest::Test
     assert_equal -2.25,  reunion.money_owed[:manoj]
     assert_equal -2.25,  reunion.money_owed[:nick]
     assert_equal -2.25,  reunion.money_owed[:tylor]
-    assert_equal 6.75,  reunion.money_owed[:jeff]
+    assert_equal 6.75,   reunion.money_owed[:jeff]
   end
 end
