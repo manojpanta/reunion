@@ -20,7 +20,7 @@ class Activity
 
   def calculate_money_owed
     hash = {}
-    @participants.keys.each do |participant|
+    @participants.each_key do |participant|
       hash[participant] = fair_share - @participants[participant]
     end
     hash

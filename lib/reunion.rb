@@ -20,7 +20,7 @@ class Reunion
 
   def money_owed
     @activities.reduce({}) do |results, activity|
-      results = activity.calculate_money_owed.merge(results){|key, oldval, newval| newval + oldval}
+      activity.calculate_money_owed.merge(results){|key, oldval, newval| newval + oldval}
     end
   end
 
