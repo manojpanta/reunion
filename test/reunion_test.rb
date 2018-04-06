@@ -96,7 +96,31 @@ class ReunionTest < Minitest::Test
     assert_equal 0,  reunion.money_owed[:nick]
   end
 
-  def test_if_it_works_for+
+  def test_money_owed_works_for_person_who_only_goes_to_one_activity
+    reunion = Reunion.new("las vegas")
+
+    activity1 = Activity.new('pool party')
+    activity1.add_participants(:nick, 10)
+    activity1.add_participants(:manoj, 10)
+    activity1.add_participants(:tylor, 10)
+
+    activity2 = Activity.new('breakfast')
+    activity2.add_participants(:nick, 10)
+    activity2.add_participants(:manoj, 10)
+    activity2.add_participants(:tylor, 10)
+    activity2.add_participants(:jeff, 1)
+
+    reunion.add_activities(activity1)
+    reunion.add_activities(activity2)
+
+    assert_equal 61, reunion.total_cost
+    assert_equal 0,  reunion.money_owed[:manoj]
+    assert_equal 0,  reunion.money_owed[:manoj]
+    assert_equal 0,  reunion.money_owed[:nick]
+    assert_equal 6.75,  reunion.money_owed[:jeff]
+
+
+  end
 
 
 end
